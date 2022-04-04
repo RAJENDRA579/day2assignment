@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -41,8 +42,10 @@ public class passportDAOImpl implements passportDAO {
 
 
 		public void addpassport(passport passport) {
-			// TODO Auto-generated method stub
-			
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+				em.persist(passport);
+			et.commit();			
 		}
 
 
@@ -51,7 +54,10 @@ public class passportDAOImpl implements passportDAO {
 
 
 		public void modifypassport(passport pass) {
-			// TODO Auto-generated method stub
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+				em.merge(pass);
+			et.commit();
 			
 		}
 
@@ -61,7 +67,11 @@ public class passportDAOImpl implements passportDAO {
 
 
 		public void deletepassport(int passportno) {
-			// TODO Auto-generated method stub
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+				passport pass = em.find(passport.class, passportno);
+				em.remove(pass);
+			et.commit();
 			
 		}
 
@@ -71,8 +81,8 @@ public class passportDAOImpl implements passportDAO {
 
 
 		public passport findpassport(int passport) {
-			// TODO Auto-generated method stub
-			return null;
+			return em.find(passport.class, passport);
+	
 		}
 
 
@@ -81,8 +91,10 @@ public class passportDAOImpl implements passportDAO {
 
 
 		public Set<passport> findAllpassports() {
-			// TODO Auto-generated method stub
-			return null;
+			Query query = em.createQuery("from passport");
+			List<passport> list = query.getResultList();
+			Set<passport> passportSet = new HashSet(list);
+			return passportSet;
 		}
 
 }
