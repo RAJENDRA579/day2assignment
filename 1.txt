@@ -1,0 +1,5 @@
+1 emp -------one pancard
+1 emp ----many address
+many employ---many proj
+
+inhertance strategies
