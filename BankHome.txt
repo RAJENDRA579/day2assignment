@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<TITLE>Insert Title Here</TITLE>
+
+<link href="mybodystyle.css" rel="stylesheet">
+
+
+</head>
+<body>
+<h1 style="color: blue" align="center">State Bank of India</h1>
+<hr>
+<h2>Welcome to the World of Banking</h2>
+<div align="center"> <a href="login.html"> SignIn</a></div>
+<div align="center"> <a href="Register.html"> SignIn</a></div>
+
+</body>
+
+</html>
